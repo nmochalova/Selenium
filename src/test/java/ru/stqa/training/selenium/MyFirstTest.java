@@ -19,14 +19,12 @@ public class MyFirstTest {
 
     @BeforeEach
     public void start() {
-        System.out.println("Before");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     @Test
     public void myFirstTest() {
-        System.out.println("t_Test");
         driver.get("http://www.google.com/");
         driver.findElement(By.name("q")).sendKeys("webdriver");
         driver.findElement(By.name("btnK")).click();
