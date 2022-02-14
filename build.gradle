@@ -14,10 +14,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.1.2'
+    implementation group: 'ru.stqa.selenium', name: 'webdriver-factory', version: '4.4'
 }
 
 test {
     useJUnitPlatform()
+    maxParallelForks = 10
 }
 
 tasks.withType(JavaCompile) {
