@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.Capabilities;
+package training.selenium.Capabilities;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.HasCapabilities;

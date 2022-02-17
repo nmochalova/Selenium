@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.ParallelTests;
+package training.selenium.ParallelTests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;

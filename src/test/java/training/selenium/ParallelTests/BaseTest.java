@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.ParallelTests;
+package training.selenium.ParallelTests;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

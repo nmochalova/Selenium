@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.Cookies;
+package training.selenium.Cookies;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;

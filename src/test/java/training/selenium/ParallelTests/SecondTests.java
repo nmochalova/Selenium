@@ -1,11 +1,22 @@
-package ru.stqa.training.selenium.ParallelTests;
+package training.selenium.ParallelTests;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-public class FirstTests extends BaseTest {
+public class SecondTests extends BaseTest{
+
     @Test
     public void myFirstTest() {
+        driver.navigate().to("http://www.google.com");
+        driver.findElement(By.name("q")).sendKeys("webdriver");
+        driver.findElement(By.name("btnK")).click();
+        wait.until(titleIs("webdriver - Поиск в Google"));
+    }
+
+    @Test
+    public void mySecondTest() {
         driver.navigate().to("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("webdriver");
         driver.findElement(By.name("btnK")).click();

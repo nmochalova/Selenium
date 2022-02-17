@@ -1,26 +1,25 @@
-package ru.stqa.training.selenium;
+package training.selenium;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-public class MyFirstTestEdge {
+public class MyFirstTestChrome {
     private WebDriver driver;
     private WebDriverWait wait;
 
     @BeforeEach
     public void start() {
-        EdgeOptions options = new EdgeOptions();
-        driver = new EdgeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

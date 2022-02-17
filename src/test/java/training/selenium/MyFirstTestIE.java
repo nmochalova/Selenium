@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium;
+package training.selenium;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

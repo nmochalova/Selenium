@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.ParallelTestsFactory;
+package training.selenium.ParallelTestsFactory;
 
 import org.junit.jupiter.api.Test;
 
