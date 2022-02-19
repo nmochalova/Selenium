@@ -13,11 +13,15 @@ public class DuckLabel extends Task6{
     public void DucksTest() {
         driver.get("http://localhost/litecart/en/");
         List<WebElement> duckBloks = driver.findElements(By.cssSelector(".middle > .content > .box"));
+        List<WebElement> stikers;
 
         for (WebElement li : duckBloks) {
-            List<WebElement> ducks = li.findElements(By.cssSelector("li"));
+            List<WebElement> ducks = li.findElements(By.cssSelector("li.product.column.shadow.hover-light"));
             for(WebElement d : ducks) {
-                assertTrue(isElementPresent(By.cssSelector("[class ^= sticker]")));
+                stikers = d.findElements(By.cssSelector("div.sticker"));
+                if(stikers.size() != 1) {
+                    assertTrue(false,"The duck should have only one sticker.");
+                }
             }
         }
     }
