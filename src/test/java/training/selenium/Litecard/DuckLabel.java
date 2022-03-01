@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class DuckLabel extends Task6{
     @Test
     public void DucksTest() {
