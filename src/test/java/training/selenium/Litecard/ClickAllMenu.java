@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ClickAllMenu extends Task6{
+public class ClickAllMenu extends BaseModule {
     @Test
     public void clickMenu() {
         AuthAdmin("admin","admin");

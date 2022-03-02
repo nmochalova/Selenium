@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DuckLabel extends Task6{
+public class DuckLabel extends BaseModule {
     @Test
     public void DucksTest() {
         driver.get("http://localhost/litecart/en/");

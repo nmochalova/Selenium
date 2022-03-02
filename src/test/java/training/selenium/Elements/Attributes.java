@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class Attributes extends BaseTestElements{
-   //F12 - Elements - Properties Если в списке отсутствует свойство, то метод getAttribut вернт null
+   //F12 - Elements - Properties Если в списке отсутствует свойство, то метод getAttribute вернет null
 
     @Test
     public void getAttributeTestDrive()  {
@@ -50,7 +50,7 @@ public class Attributes extends BaseTestElements{
         driver.get("http://localhost/litecart/en/");
         WebElement home = driver.findElement(By.cssSelector("#breadcrumbs a"));
         System.out.println(home.getAttribute("outerHTML")); //в теге атрибут href имеет относительный адрес
-        System.out.println(home.getAttribute("href"));  //свойство href имеет полный адрес
+        System.out.println(home.getAttribute("href"));  //свойство href имеет абсолютный адрес
     }
 
     @Test

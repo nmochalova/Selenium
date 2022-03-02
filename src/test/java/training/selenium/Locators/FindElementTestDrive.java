@@ -93,7 +93,7 @@ public class FindElementTestDrive {
         return nameAndEmail;
     }
 
-    //Пример #2 чтения таблицы при помощи findElements
+    //Пример #2 чтения таблицы при помощи findElement
     private List<DataTable> readTableSecond() {
         List<DataTable> nameAndEmail = new ArrayList<>();
 

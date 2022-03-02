@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ClickMenuFast extends Task6{
+public class ClickMenuFast extends BaseModule {
     @Test
     public void clickMenuFastTestDrive() {
         AuthAdmin("admin","admin");
