@@ -1,4 +1,4 @@
-package training.selenium.Litecard;
+package training.selenium.Litecard.lib.DataTable;
 
 public class DataTableTwoColumns {
     public String name;

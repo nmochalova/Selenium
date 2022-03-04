@@ -1,14 +1,26 @@
-package training.selenium.Litecard;
+package training.selenium.Litecard.Tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.stqa.selenium.factory.WebDriverPool;
+import training.selenium.Litecard.lib.BaseModule;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DuckLabel extends BaseModule {
+public class DuckLabelTest extends BaseModule {
+    @BeforeEach
+    public void startBrowserChrome() {
+        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    }
+
     @Test
     public void DucksTest() {
         driver.get("http://localhost/litecart/en/");

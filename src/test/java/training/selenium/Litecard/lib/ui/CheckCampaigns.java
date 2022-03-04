@@ -1,19 +1,19 @@
-package training.selenium.Litecard;
+package training.selenium.Litecard.lib.ui;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import training.selenium.Litecard.lib.BaseModule;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CheckCampaigns extends BaseModule{
+public class CheckCampaigns extends BaseModule {
     private final String MAIN_PAGE_PRODUCT = "#box-campaigns li.product:first-child ";
     private final  String PRODUCT_CARD = "#box-product ";
 
    //10.а) и б) На главной странице и на странице товара совпадают текст названия товара и цены (обычная и акционная)
-    @Test
-    public void checkTitleAndPrice() {
+     public void checkTitleAndPrice(WebDriver driver) {
         driver.get("http://localhost/litecart/en/");
         WebElement duck = driver.findElement(By.cssSelector(MAIN_PAGE_PRODUCT));
         String title = duck.findElement(By.cssSelector("div[class=name]")).getText();
@@ -35,8 +35,7 @@ public class CheckCampaigns extends BaseModule{
     //10 в) обычная цена зачёркнутая и серая (одинаковые значения для каналов R, G и B)
     // г) акционная жирная и красная (каналы G и B имеют нулевые значения)
     //(цвета надо проверить на каждой странице независимо, при этом цвета на разных страницах могут не совпадать)
-    @Test
-    public void checkColorPrice() {
+    public void checkColorPrice(WebDriver driver) {
         driver.get("http://localhost/litecart/en/");
 
         assertTrue(checkColorRegularPrice(By.cssSelector(MAIN_PAGE_PRODUCT + ".regular-price")));
@@ -49,8 +48,7 @@ public class CheckCampaigns extends BaseModule{
     }
 
     //10 д) акционная цена крупнее, чем обычная (это тоже надо проверить на каждой странице независимо)
-    @Test
-    public void checkSizeFontPrices() {
+    public void checkSizeFontPrices(WebDriver driver) {
         driver.get("http://localhost/litecart/en/");
         By mainRegularPrice = By.cssSelector(MAIN_PAGE_PRODUCT + ".regular-price");
         By mainCampaignPrice = By.cssSelector(MAIN_PAGE_PRODUCT + ".campaign-price");

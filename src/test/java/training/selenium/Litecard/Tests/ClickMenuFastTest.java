@@ -1,15 +1,27 @@
-package training.selenium.Litecard;
+package training.selenium.Litecard.Tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.stqa.selenium.factory.WebDriverPool;
+import training.selenium.Litecard.lib.BaseModule;
 
 import java.text.MessageFormat;
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ClickMenuFast extends BaseModule {
+public class ClickMenuFastTest extends BaseModule {
+    @BeforeEach
+    public void startBrowserChrome() {
+        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    }
+
     @Test
     public void clickMenuFastTestDrive() {
         AuthAdmin("admin","admin");
