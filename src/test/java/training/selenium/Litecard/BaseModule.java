@@ -2,17 +2,16 @@ package training.selenium.Litecard;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.factory.WebDriverPool;
 
 import java.time.Duration;
 import java.util.*;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
@@ -21,7 +20,7 @@ public class BaseModule {
     WebDriverWait wait;
 
     @BeforeEach
-    public void startBrowser() {
+    public void startBrowserChrome() {
         driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
@@ -124,5 +123,65 @@ public class BaseModule {
             listOfOneColumn.add(name);
         }
         return listOfOneColumn;
+    }
+
+    public boolean checkColorRegularPrice(By locator) {
+        Color priceRegularColor = Color.fromString(driver.findElement(locator).getCssValue("color"));
+        int r = priceRegularColor.getColor().getRed();
+        int g = priceRegularColor.getColor().getGreen();
+        int b = priceRegularColor.getColor().getBlue();
+        if (r==g && g==b) {
+            assertTrue(checkCrossedOutFont(locator),"This font not crossed out.");
+            return true;
+        } else {
+            System.out.println("rgb("+r+","+g+","+b+")");
+            return false;
+        }
+    }
+
+    public boolean checkCrossedOutFont(By locator) {
+        WebElement croosedOutFont = driver.findElement(locator);
+        if (croosedOutFont.getTagName().equals("s")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkColorCampaignPrice(By locator) {
+        Color priceCampaignColor = Color.fromString(driver.findElement(locator).getCssValue("color"));
+        int r = priceCampaignColor.getColor().getRed();
+        int g = priceCampaignColor.getColor().getGreen();
+        int b = priceCampaignColor.getColor().getBlue();
+        if (g==0 && b==0) {
+            assertTrue(checkStrongFont(locator),"This font not strong.");
+            return true;
+        } else {
+            System.out.println("rgb("+r+","+g+","+b+")");
+            return false;
+        }
+    }
+
+    public boolean checkStrongFont(By locator) {
+        WebElement strongFont = driver.findElement(locator);
+        if (strongFont.getTagName().equals("strong")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean checkSizePrices(By locatorRegularPrice, By locatorCampaignPrice) {
+        WebElement RegularPrice = driver.findElement(locatorRegularPrice);
+        WebElement CampaignPrice = driver.findElement(locatorCampaignPrice);
+
+        Dimension sizeRegularPrice = RegularPrice.getSize();
+        Dimension sizeCampaignPrice = CampaignPrice.getSize();
+
+        if (sizeRegularPrice.getHeight() < sizeCampaignPrice.getHeight()) { //акционная цена должна быть крупнее, чем обычная
+            return true;
+        } else {
+           return false;
+        }
     }
 }
