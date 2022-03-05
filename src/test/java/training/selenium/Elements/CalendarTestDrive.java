@@ -6,10 +6,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-
 public class CalendarTestDrive extends BaseTestElements {
     @Test
     public void executeScriptTestDrive(){
@@ -27,17 +23,24 @@ public class CalendarTestDrive extends BaseTestElements {
         js.executeScript("arguments[0].click();", button);
     }
 
+    //https://barancev.github.io/how-to-set-datepicker-value/
+    //как в Selenium выбрать дату в jQuery Datepicker?
     @Test
-    public void DatepickTestDrive() {
+    public void DatepickTestDrive() throws InterruptedException {
         driver.get("https://jqueryui.com/datepicker/#default");
-        isElementPresent(By.cssSelector("input#datepicker"));
-        SetDatePicker(driver, By.cssSelector("input#datepicker"),"02/20/2002");
+        String locator ="input#datepicker";
+
+        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe.demo-frame")));
+        Thread.sleep(2000);
+        SetDatePicker(driver, locator,"02/20/2002");
     }
 
-    private void SetDatePicker(WebDriver driver, By locator, String strDate)
-    {
+    private void SetDatePicker(WebDriver driver, String locator, String strDate) throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        WebElement datePicker = driver.findElement(locator);
-        js.executeScript("$('{0}').datepicker('setDate', '{1}')", strDate);
+        isElementPresent(By.cssSelector(locator));
+
+        System.out.println("$('"+ locator + "').datepicker('setDate', '" + strDate + "')");
+        js.executeScript("$('"+ locator + "').datepicker('setDate', '" + strDate + "')");
+        Thread.sleep(2000);
     }
 }
