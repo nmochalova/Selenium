@@ -37,4 +37,9 @@ public class BaseTestElements {
             return false;
         }
     }
+
+    public void logout() {
+        driver.findElement(By.cssSelector("[title=Logout]")).click();
+    }
+
 }

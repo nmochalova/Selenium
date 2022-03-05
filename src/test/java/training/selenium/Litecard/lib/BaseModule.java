@@ -176,10 +176,13 @@ public class BaseModule {
         WebElement RegularPrice = driver.findElement(locatorRegularPrice);
         WebElement CampaignPrice = driver.findElement(locatorCampaignPrice);
 
-        Dimension sizeRegularPrice = RegularPrice.getSize();
-        Dimension sizeCampaignPrice = CampaignPrice.getSize();
+        String[] campaignPricePX = CampaignPrice.getCssValue("font-size").split("px");
+        String[] regularPricePX = RegularPrice.getCssValue("font-size").split("px");
 
-        if (sizeRegularPrice.getHeight() < sizeCampaignPrice.getHeight()) { //акционная цена должна быть крупнее, чем обычная
+        Double campaignPriceDouble = Double.parseDouble(campaignPricePX[0]);
+        Double regularPricePXDouble = Double.parseDouble(regularPricePX[0]);
+
+        if (campaignPriceDouble > regularPricePXDouble) { //акционная цена должна быть крупнее, чем обычная
             return true;
         } else {
            return false;
