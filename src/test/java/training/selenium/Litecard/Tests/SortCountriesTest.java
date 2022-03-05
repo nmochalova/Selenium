@@ -17,11 +17,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SortCountriesTest extends BaseModule {
-    @BeforeEach
-    public void startBrowserChrome() {
-        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    }
 
     //8 а) на странице Countries проверяет, что страны расположены в алфавитном порядке
     @Test

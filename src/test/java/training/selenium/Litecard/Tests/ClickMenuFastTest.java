@@ -16,12 +16,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClickMenuFastTest extends BaseModule {
-    @BeforeEach
-    public void startBrowserChrome() {
-        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    }
-
     @Test
     public void clickMenuFastTestDrive() {
         AuthAdmin("admin","admin");

@@ -13,12 +13,6 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ClickAllMenuTest extends BaseModule {
-    @BeforeEach
-    public void startBrowserChrome() {
-        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    }
-
     @Test
     public void clickMenu() {
         AuthAdmin("admin","admin");

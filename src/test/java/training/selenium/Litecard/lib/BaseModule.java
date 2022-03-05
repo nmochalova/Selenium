@@ -1,12 +1,15 @@
 package training.selenium.Litecard.lib;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.factory.WebDriverPool;
 import training.selenium.Litecard.lib.DataTable.DataTableTwoColumns;
 
+import java.time.Duration;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,11 +20,11 @@ public class BaseModule {
     public WebDriver driver;
     public WebDriverWait wait;
 
-//    @BeforeEach
-//    public void startBrowserChrome() {
-//        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
-//        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-//    }
+    @BeforeEach
+    public void startBrowserChrome() {
+        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
+        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    }
 
     @AfterAll
     public static void stopAllBrowsers() {

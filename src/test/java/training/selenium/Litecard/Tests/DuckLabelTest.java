@@ -15,12 +15,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DuckLabelTest extends BaseModule {
-    @BeforeEach
-    public void startBrowserChrome() {
-        driver = WebDriverPool.DEFAULT.getDriver(new ChromeOptions());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-    }
-
     @Test
     public void DucksTest() {
         driver.get("http://localhost/litecart/en/");

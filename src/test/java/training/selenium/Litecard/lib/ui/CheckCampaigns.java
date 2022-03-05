@@ -4,11 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import training.selenium.Litecard.lib.BaseModule;
+import training.selenium.Litecard.lib.MultiBrowsers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CheckCampaigns extends BaseModule {
+public class CheckCampaigns extends MultiBrowsers {
     private final String MAIN_PAGE_PRODUCT = "#box-campaigns li.product:first-child ";
     private final  String PRODUCT_CARD = "#box-product ";
 
