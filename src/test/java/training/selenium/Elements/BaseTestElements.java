@@ -42,4 +42,25 @@ public class BaseTestElements {
         driver.findElement(By.cssSelector("[title=Logout]")).click();
     }
 
+    public void AuthAdmin(String username, String password)  {
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys(username);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.name("login")).click();
+    }
+
+    public void clickMainMenu(By locator) {
+        isElementPresent(locator);
+        driver.findElement(locator).click();
+    }
+
+    public boolean isTitlePresent(String title) {
+        try {
+            wait.until(titleIs(title));
+            return true;
+        } catch (TimeoutException ex) {
+            return false;
+        }
+    }
+
 }

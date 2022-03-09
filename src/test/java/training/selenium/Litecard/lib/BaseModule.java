@@ -42,6 +42,17 @@ public class BaseModule {
         driver.findElement(By.cssSelector("[title=Logout]")).click();
     }
 
+    public void logoutLitecard() {
+        driver.findElement(By.xpath("//div[@class='content']//a[contains(.,'Logout')]")).click();
+    }
+
+    public void loginLitecard(String email, String password) {
+        driver.findElement(By.cssSelector("input[name=email]")).sendKeys(email);
+        driver.findElement(By.cssSelector("input[name=password]")).sendKeys(password);
+        driver.findElement(By.cssSelector("button[name=login]")).click();
+        isElementPresent(By.xpath("//div[@class='notice success'][contains(.,'You are now logged')]"));
+    }
+
     public void clickMainMenu(By locator) {
         isElementPresent(locator);
         driver.findElement(locator).click();
