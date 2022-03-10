@@ -245,7 +245,6 @@ public class BaseModule {
 
     public String relativePath(String path) {
         String localDir = System.getProperty("user.dir");
-        //   File file = new File(localDir + "\\img\\yellow_apple.jpg");
         File file = new File(localDir + path);
         String strPath = file.getPath();
         return strPath;
