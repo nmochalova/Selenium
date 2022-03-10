@@ -2,10 +2,6 @@ package training.selenium.Litecard.Tests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import training.selenium.Litecard.lib.BaseModule;
 import training.selenium.Litecard.lib.ui.CheckAccount;
 
 import java.text.MessageFormat;

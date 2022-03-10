@@ -1,14 +1,8 @@
 package training.selenium.Litecard.Tests;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.stqa.selenium.factory.WebDriverPool;
 import training.selenium.Litecard.lib.BaseModule;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

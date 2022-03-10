@@ -8,6 +8,13 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.factory.WebDriverPool;
 import training.selenium.Litecard.lib.DataTable.DataTableTwoColumns;
+import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Random;
 
 import java.time.Duration;
 import java.util.*;
@@ -137,6 +144,26 @@ public class BaseModule {
         return listOfOneColumn;
     }
 
+    public List<DataTableWebElements> readTableReturnTableWebElements (By locator, int columnOne, int columnTwo) {
+        List<DataTableWebElements> listOfTwoColumns = new ArrayList<>();
+
+        WebElement table = driver.findElement(locator);
+        List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+        WebElement c1;
+        WebElement c2;
+        List<WebElement> cells;
+
+        for(int i=0; i<rows.size();i++) {
+            cells = rows.get(i).findElements(By.tagName("td"));
+            c1 = cells.get(columnOne);
+            c2 = cells.get(columnTwo);
+            listOfTwoColumns.add(new DataTableWebElements(c1,c2));
+        }
+
+        return listOfTwoColumns;
+    }
+
     public boolean checkColorRegularPrice(By locator) {
         Color priceRegularColor = Color.fromString(driver.findElement(locator).getCssValue("color"));
         int r = priceRegularColor.getColor().getRed();
@@ -200,4 +227,27 @@ public class BaseModule {
         }
     }
 
+    public int randomNumber(int min, int max) {
+        // Инициализируем генератор
+        Random rnd = new Random(System.currentTimeMillis());
+        // Получаем случайное число в диапазоне от min до max (включительно)
+        int number = min + rnd.nextInt(max - min + 1);
+        return number;
+    }
+
+    //Возвращает текущую дату в формате dd.mm.yyyy
+    public String currentDate() {
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+        String currentDate = dateFormat.format(date);
+        return currentDate;
+    }
+
+    public String relativePath(String path) {
+        String localDir = System.getProperty("user.dir");
+        //   File file = new File(localDir + "\\img\\yellow_apple.jpg");
+        File file = new File(localDir + path);
+        String strPath = file.getPath();
+        return strPath;
+    }
 }
