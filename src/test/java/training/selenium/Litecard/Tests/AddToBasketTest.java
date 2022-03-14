@@ -7,6 +7,8 @@ import training.selenium.Litecard.lib.ui.CheckBasket;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class AddToBasketTest extends CheckBasket {
     /***
      * Задание 13. Сделайте сценарий работы с корзиной
@@ -36,7 +38,9 @@ public class AddToBasketTest extends CheckBasket {
         while(!isElementPresent(By.tagName("em"))) {
             List<WebElement> products = driver.findElements(By.cssSelector(".shortcut"));
             if (products.size() == 0) {
+                //отдельная ветка, потому что последний продукт не имеет плашки с перечнем продуктов
                 removeProductsFromCart();
+                assertTrue(isElementPresent(By.tagName("em")));
             } else {
                 checkTableAfterRemoveProduct(products.size());
             }
