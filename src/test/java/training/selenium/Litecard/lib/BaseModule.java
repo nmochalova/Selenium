@@ -12,8 +12,6 @@ import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
 
 import java.io.File;
 import java.text.DateFormat;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.Random;
 
 import java.time.Duration;
@@ -144,6 +142,20 @@ public class BaseModule {
         return listOfOneColumn;
     }
 
+    //чтения таблицы, возвращаем массив WebElement (отсчет столбцов с 1)
+    public ArrayList<WebElement> readTableByWebElement(By locator, int column,int count) {
+        ArrayList<WebElement> listOfOneColumn = new  ArrayList<WebElement>();
+
+        WebElement table = driver.findElement(locator);
+        List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+        for(int i=1; i<=count;i++) {
+            WebElement name = rows.get(i).findElement(By.xpath("./td["+column+"]"));
+            listOfOneColumn.add(name);
+        }
+        return listOfOneColumn;
+    }
+
     public List<DataTableWebElements> readTableReturnTableWebElements (By locator, int columnOne, int columnTwo) {
         List<DataTableWebElements> listOfTwoColumns = new ArrayList<>();
 
@@ -248,5 +260,19 @@ public class BaseModule {
         File file = new File(localDir + path);
         String strPath = file.getPath();
         return strPath;
+    }
+
+    public void clickHome() {
+        driver.findElement(By.cssSelector("a i.fa[title=Home]")).click();
+        isElementPresent(By.cssSelector("#box-most-popular"));
+    }
+
+    public int getIntByTextOfWebElement(WebElement element) {
+        String elementStr = element.getText();
+        return Integer.parseInt(elementStr);
+    }
+
+    public void clickCheckout() {
+        driver.findElement(By.xpath("//a[contains(.,'Checkout')]")).click();
     }
 }

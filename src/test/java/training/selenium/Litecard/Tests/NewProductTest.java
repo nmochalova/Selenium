@@ -10,8 +10,7 @@ public class NewProductTest extends CheckProduct {
     //Задание 12. Cценарий добавления товара
     @Test
     public void newProduct() {
-        int i = randomNumber(1000,9999);
-
+        int i = randomNumber(10000,99999);
         String category = "Apples"; //Будем добавлять в категорию Apples, если ее нет, то нужно создать.
         String name = "Apple_"+i;  //имя продукта
         String code = "a"+i;       //код продукта
@@ -36,7 +35,4 @@ public class NewProductTest extends CheckProduct {
 
         assertTrue(CheckProductAdded(category,name),"The product " + name + "has not been added.");
     }
-
-
-
 }

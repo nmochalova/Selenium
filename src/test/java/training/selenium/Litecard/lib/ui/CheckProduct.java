@@ -1,6 +1,8 @@
 package training.selenium.Litecard.lib.ui;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import training.selenium.Litecard.lib.BaseModule;
 import org.openqa.selenium.NoSuchElementException;
 import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
@@ -8,7 +10,10 @@ import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class CheckProduct extends BaseModule {
+
     //Проверка категории на существование
     public boolean checkCategory(String category) {
         try {
@@ -85,4 +90,17 @@ public class CheckProduct extends BaseModule {
             }
         }
     }
+
+    public static void clickProduct(WebDriver driver, By locator) {
+        WebElement firstProduct = driver.findElement(locator);
+        String title = firstProduct.findElement(By.cssSelector("div[class=name]")).getText();
+
+        firstProduct.click();
+
+        WebElement boxProduct = driver.findElement(By.cssSelector("#box-product "));
+        String titleBoxProduct = boxProduct.findElement(By.tagName("h1")).getText();
+        assertEquals(title,titleBoxProduct,"The title is different.");
+    }
+
+
 }
