@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import training.selenium.Litecard.lib.BaseModule;
+import training.selenium.Litecard.lib.Utils;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class CheckBasket extends BaseModule {
         assertEquals(title,titleBoxProduct,"The title is different.");
 
         WebElement quantity = driver.findElement(By.cssSelector("span.quantity"));
-        int countProductsBefore = getIntByTextOfWebElement(quantity);
+        int countProductsBefore = Utils.getIntByTextOfWebElement(quantity);
         addToCart(driver);
         wait.until(textToBePresentInElement(quantity,Integer.toString(countProductsBefore+1)));
     }

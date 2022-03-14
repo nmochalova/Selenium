@@ -10,10 +10,6 @@ import ru.stqa.selenium.factory.WebDriverPool;
 import training.selenium.Litecard.lib.DataTable.DataTableTwoColumns;
 import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
 
-import java.io.File;
-import java.text.DateFormat;
-import java.util.Random;
-
 import java.time.Duration;
 import java.util.*;
 
@@ -239,37 +235,9 @@ public class BaseModule {
         }
     }
 
-    public int randomNumber(int min, int max) {
-        // Инициализируем генератор
-        Random rnd = new Random(System.currentTimeMillis());
-        // Получаем случайное число в диапазоне от min до max (включительно)
-        int number = min + rnd.nextInt(max - min + 1);
-        return number;
-    }
-
-    //Возвращает текущую дату в формате dd.mm.yyyy
-    public String currentDate() {
-        Date date = new Date();
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-        String currentDate = dateFormat.format(date);
-        return currentDate;
-    }
-
-    public String relativePath(String path) {
-        String localDir = System.getProperty("user.dir");
-        File file = new File(localDir + path);
-        String strPath = file.getPath();
-        return strPath;
-    }
-
     public void clickHome() {
         driver.findElement(By.cssSelector("a i.fa[title=Home]")).click();
         isElementPresent(By.cssSelector("#box-most-popular"));
-    }
-
-    public int getIntByTextOfWebElement(WebElement element) {
-        String elementStr = element.getText();
-        return Integer.parseInt(elementStr);
     }
 
     public void clickCheckout() {

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import training.selenium.Litecard.lib.BaseModule;
 import org.openqa.selenium.NoSuchElementException;
 import training.selenium.Litecard.lib.DataTable.DataTableWebElements;
+import training.selenium.Litecard.lib.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +49,10 @@ public class CheckProduct extends BaseModule {
         driver.findElement(By.cssSelector("input[name=quantity]")).clear();
         driver.findElement(By.cssSelector("input[name=quantity]")).sendKeys("5");
 
-        String pathString = relativePath(fileImg);
+        String pathString = Utils.relativePath(fileImg);
         driver.findElement(By.cssSelector("input[type=file]")).sendKeys(pathString);
 
-        driver.findElement(By.cssSelector("input[name=date_valid_from]")).sendKeys(currentDate());
+        driver.findElement(By.cssSelector("input[name=date_valid_from]")).sendKeys(Utils.currentDate());
     }
 
     public void fillingInformation(String shortDesc, String fullDesc) {

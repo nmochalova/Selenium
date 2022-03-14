@@ -35,15 +35,19 @@ public class AddToBasketTest extends CheckBasket {
         clickCheckout();
         stopAction();
 
-        while(!isElementPresent(By.tagName("em"))) {
+        while(!isPresent()) {
             List<WebElement> products = driver.findElements(By.cssSelector(".shortcut"));
-            if (products.size() == 0) {
+            if (products.isEmpty()) {
                 //отдельная ветка, потому что последний продукт не имеет плашки с перечнем продуктов
                 removeProductsFromCart();
-                assertTrue(isElementPresent(By.tagName("em")));
+                assertTrue(isPresent());
             } else {
                 checkTableAfterRemoveProduct(products.size());
             }
         }
+    }
+
+    private boolean isPresent() {
+        return isElementPresent(By.tagName("em"));
     }
 }

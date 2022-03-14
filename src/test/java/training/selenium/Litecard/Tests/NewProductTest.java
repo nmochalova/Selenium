@@ -2,6 +2,7 @@ package training.selenium.Litecard.Tests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import training.selenium.Litecard.lib.Utils;
 import training.selenium.Litecard.lib.ui.CheckProduct;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,7 +11,7 @@ public class NewProductTest extends CheckProduct {
     //Задание 12. Cценарий добавления товара
     @Test
     public void newProduct() {
-        int i = randomNumber(10000,99999);
+        int i = Utils.randomNumber(10000,99999);
         String category = "Apples"; //Будем добавлять в категорию Apples, если ее нет, то нужно создать.
         String name = "Apple_"+i;  //имя продукта
         String code = "a"+i;       //код продукта
