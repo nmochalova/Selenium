@@ -1,11 +1,15 @@
 package training.selenium.Litecard.lib;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.Set;
 
 public class Utils {
     public static int getIntByTextOfWebElement(WebElement element) {
@@ -35,4 +39,5 @@ public class Utils {
         String currentDate = dateFormat.format(date);
         return currentDate;
     }
+
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.Color;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.stqa.selenium.factory.WebDriverPool;
 import training.selenium.Litecard.lib.DataTable.DataTableTwoColumns;
@@ -242,5 +243,34 @@ public class BaseModule {
 
     public void clickCheckout() {
         driver.findElement(By.xpath("//a[contains(.,'Checkout')]")).click();
+    }
+
+    //Переключение в новое открытое окно и возвращение обратно.
+    public void thereAndBack(WebElement element)  {
+        //Запоминаем идентификатор текущего окна
+        String originalWindow = driver.getWindowHandle();
+        //запоминаем идентификаторы уже открытых окон
+        Set<String> exitingWindows = driver.getWindowHandles();
+        // кликаем кнопку, которая открывает окно
+        element.click();
+        //ждем появления нового окна, с новым идентификатором
+        String newWindow = wait.until(anyWindowOtherThan(exitingWindows));
+        //переключаемся на новое окно
+        driver.switchTo().window(newWindow);
+        //закрываем его
+        driver.close();
+        //и возвращаемся в исходное окно
+        driver.switchTo().window(originalWindow);
+    }
+
+    //Ожидание появления нового окна
+    public ExpectedCondition<String> anyWindowOtherThan(Set<String>oldWindows){
+        return new ExpectedCondition<String>(){
+            public String apply(WebDriver driver){
+                Set<String> handles = driver.getWindowHandles();
+                handles.removeAll(oldWindows);
+                return  handles.size() > 0 ? handles.iterator().next() : null;
+            }
+        };
     }
 }
