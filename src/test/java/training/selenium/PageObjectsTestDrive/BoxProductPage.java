@@ -14,7 +14,7 @@ public class BoxProductPage extends Page{
         super(driver);
     }
 
-    public void addToCart(WebDriver driver) {
+    public void addToCart() {
         WebElement quantity = driver.findElement(By.cssSelector("span.quantity"));
         int countProductsBefore = Utils.getIntByTextOfWebElement(quantity);
 

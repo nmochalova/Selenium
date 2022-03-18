@@ -14,7 +14,7 @@ public class Application {
     private WebDriver driver;
 
     private final MainLitecardPage mainLitecardPage;
-    private BoxProductPage boxProductPage;
+    private final BoxProductPage boxProductPage;
     private final CustomerCartPage customerCartPage;
     private final Page page;
 
@@ -32,29 +32,27 @@ public class Application {
     }
 
     public void addProductsToCart(int countProducts) {
-        driver.get("http://localhost/litecart/en/");
+        mainLitecardPage.open();
 
         for (int i=0;i<countProducts;i++) {
-            String firstProduct = "#box-most-popular li.product:first-child";
-            mainLitecardPage.clickProduct(driver, By.cssSelector(firstProduct));
-            boxProductPage.addToCart(driver);
+            mainLitecardPage.clickProduct();
+            boxProductPage.addToCart();
             mainLitecardPage.clickHome();
         }
     }
 
-    public void clickCheckout() {
-        driver.findElement(By.xpath("//a[contains(.,'Checkout')]")).click();
+    public void GoToCheckout() {
+        mainLitecardPage.cliclCheckout();
         customerCartPage.stopAction();
     }
 
     public void removeProductsFromCart() {
         while(!isPresent()) {
-            List<WebElement> products = driver.findElements(By.cssSelector(".shortcut"));
-            if (products.isEmpty()) {
+            if (customerCartPage.getProducts().isEmpty()) {
                 //отдельная ветка, потому что последний продукт не имеет плашки с перечнем продуктов
                 customerCartPage.clickRemoveButton();
             } else {
-                customerCartPage.RemoveProductAndCheckTable(products.size());
+                customerCartPage.RemoveProductAndCheckTable(customerCartPage.getProducts().size());
             }
         }
     }

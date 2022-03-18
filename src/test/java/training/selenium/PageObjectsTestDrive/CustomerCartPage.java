@@ -37,4 +37,7 @@ public class CustomerCartPage extends Page{
         driver.findElement(By.cssSelector(".shortcuts li:first-child")).click();
     }
 
+    public List<WebElement> getProducts() {
+        return  driver.findElements(By.cssSelector(".shortcut"));
+    }
 }

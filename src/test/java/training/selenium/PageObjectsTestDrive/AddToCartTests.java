@@ -7,7 +7,7 @@ public class AddToCartTests extends TestBase{
     @Test
     public void addToCart() {
         app.addProductsToCart(3);
-        app.clickCheckout();
+        app.GoToCheckout();
         app.removeProductsFromCart();
         assertTrue(app.isPresent());
     }

@@ -13,8 +13,16 @@ public class MainLitecardPage extends Page{
         super(driver);
     }
 
-    public void clickProduct(WebDriver driver, By locator)  {
-        WebElement firstProduct = driver.findElement(locator);
+    public void open(){
+        driver.get("http://localhost/litecart/en/");
+    }
+
+    public void cliclCheckout() {
+        driver.findElement(By.xpath("//a[contains(.,'Checkout')]")).click();
+    }
+
+    public void clickProduct()  {
+        WebElement firstProduct = driver.findElement(By.cssSelector("#box-most-popular li.product:first-child"));
         String title = firstProduct.findElement(By.cssSelector("div[class=name]")).getText();
 
         firstProduct.click();
