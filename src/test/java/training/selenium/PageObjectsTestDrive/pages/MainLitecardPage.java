@@ -1,4 +1,4 @@
-package training.selenium.PageObjectsTestDrive;
+package training.selenium.PageObjectsTestDrive.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package training.selenium.PageObjectsTestDrive;
+package training.selenium.PageObjectsTestDrive.model;
 
 public class Product {
     private int countProducts;

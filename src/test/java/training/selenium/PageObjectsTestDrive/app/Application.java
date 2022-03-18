@@ -1,9 +1,13 @@
-package training.selenium.PageObjectsTestDrive;
+package training.selenium.PageObjectsTestDrive.app;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import training.selenium.PageObjectsTestDrive.model.Product;
+import training.selenium.PageObjectsTestDrive.pages.BoxProductPage;
+import training.selenium.PageObjectsTestDrive.pages.CustomerCartPage;
+import training.selenium.PageObjectsTestDrive.pages.MainLitecardPage;
+import training.selenium.PageObjectsTestDrive.pages.Page;
 
 import java.time.Duration;
 
@@ -29,10 +33,10 @@ public class Application {
         driver.quit();
     }
 
-    public void addProductsToCart(int countProducts) {
+    public void addProductsToCart(Product product) {
         mainLitecardPage.open();
 
-        for (int i=0;i<countProducts;i++) {
+        for (int i=0;i<product.getCountProducts();i++) {
             mainLitecardPage.clickProduct();
             boxProductPage.addToCart();
             mainLitecardPage.clickHome();

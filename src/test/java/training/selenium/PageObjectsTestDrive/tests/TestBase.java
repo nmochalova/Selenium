@@ -1,6 +1,7 @@
-package training.selenium.PageObjectsTestDrive;
+package training.selenium.PageObjectsTestDrive.tests;
 
 import org.junit.jupiter.api.BeforeEach;
+import training.selenium.PageObjectsTestDrive.app.Application;
 
 public class TestBase {
     public static ThreadLocal<Application> tlApp = new ThreadLocal<>();
