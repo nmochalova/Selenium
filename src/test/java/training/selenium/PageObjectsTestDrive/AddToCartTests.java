@@ -9,6 +9,6 @@ public class AddToCartTests extends TestBase{
         app.addProductsToCart(3);
         app.GoToCheckout();
         app.removeProductsFromCart();
-        assertTrue(app.isPresent());
+        assertTrue(app.CartIsEmpty());
     }
 }

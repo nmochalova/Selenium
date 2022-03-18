@@ -13,10 +13,6 @@ public class CustomerCartPage extends Page{
         super(driver);
     }
 
-    public void clickRemoveButton() {
-        driver.findElement(By.cssSelector("button[name=remove_cart_item]")).click();
-    }
-
     public void RemoveProductAndCheckTable(int count) {
         //Найти эл-т который должен исчезнуть
         WebElement element = null;
@@ -33,11 +29,19 @@ public class CustomerCartPage extends Page{
         wait.until(stalenessOf(element));
     }
 
+    public void clickRemoveButton() {
+        driver.findElement(By.cssSelector("button[name=remove_cart_item]")).click();
+    }
+
     public void stopAction() {
         driver.findElement(By.cssSelector(".shortcuts li:first-child")).click();
     }
 
     public List<WebElement> getProducts() {
         return  driver.findElements(By.cssSelector(".shortcut"));
+    }
+
+    public boolean isEmpty() {
+        return isElementPresent(By.tagName("em"));
     }
 }

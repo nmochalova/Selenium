@@ -2,12 +2,10 @@ package training.selenium.PageObjectsTestDrive;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class Application {
     private WebDriverWait wait;
@@ -42,22 +40,22 @@ public class Application {
     }
 
     public void GoToCheckout() {
-        mainLitecardPage.cliclCheckout();
-        customerCartPage.stopAction();
+        mainLitecardPage.clickCheckout();
+        customerCartPage.stopAction();  //фиксируем продукт в корзине на первом
     }
 
     public void removeProductsFromCart() {
-        while(!isPresent()) {
-            if (customerCartPage.getProducts().isEmpty()) {
-                //отдельная ветка, потому что последний продукт не имеет плашки с перечнем продуктов
-                customerCartPage.clickRemoveButton();
-            } else {
-                customerCartPage.RemoveProductAndCheckTable(customerCartPage.getProducts().size());
-            }
+       while(!customerCartPage.getProducts().isEmpty()) {
+           //пока продукт в корзине не последний удаляем его и проверяем, что он удален из таблицы
+           customerCartPage.RemoveProductAndCheckTable(customerCartPage.getProducts().size());
+       }
+        if (customerCartPage.getProducts().isEmpty()) {
+            //последний продукт не имеет плашки с перечнем продуктов. Для него таблицу не проверяем.
+            customerCartPage.clickRemoveButton();
         }
     }
 
-    public boolean isPresent() {
-        return page.isElementPresent(By.tagName("em"));
+    public boolean CartIsEmpty() {
+        return customerCartPage.isEmpty();
     }
 }
