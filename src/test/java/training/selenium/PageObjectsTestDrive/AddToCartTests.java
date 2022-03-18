@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AddToCartTests extends TestBase{
     @Test
     public void addToCart() {
-        app.addProductsToCart(3);
+        Product product = Product.newEntity().withCountProducts(3).build();
+
+        app.addProductsToCart(product.getCountProducts());
         app.GoToCheckout();
         app.removeProductsFromCart();
         assertTrue(app.CartIsEmpty());
