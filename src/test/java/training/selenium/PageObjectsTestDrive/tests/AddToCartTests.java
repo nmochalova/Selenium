@@ -5,7 +5,7 @@ import training.selenium.PageObjectsTestDrive.model.Product;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AddToCartTests extends TestBase {
+public class AddToCartTests extends TestBase   {
     @Test
     public void addToCart() {
         Product product = Product.newEntity().withCountProducts(3).build();
