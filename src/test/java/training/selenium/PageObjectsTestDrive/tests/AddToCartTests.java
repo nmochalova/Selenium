@@ -1,15 +1,20 @@
 package training.selenium.PageObjectsTestDrive.tests;
 
-import org.junit.jupiter.api.Test;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
+//import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import training.selenium.PageObjectsTestDrive.model.Product;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class AddToCartTests extends TestBase   {
-    @Test
-    public void addToCart() {
-        Product product = Product.newEntity().withCountProducts(3).build();
+@RunWith(DataProviderRunner.class)
+public class AddToCartTests extends TestBase {
 
+    @Test
+    @UseDataProvider(value = "validCustomers", location = DataProviders.class)
+    public void addToCart(Product product) {
         app.addProductsToCart(product);
         app.GoToCheckout();
         app.removeProductsFromCart();
