@@ -2,7 +2,8 @@ package training.selenium.PageObjectsTestDrive.tests;
 
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import training.selenium.PageObjectsTestDrive.model.Product;
 

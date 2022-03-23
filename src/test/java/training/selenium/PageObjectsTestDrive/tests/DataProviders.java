@@ -9,6 +9,8 @@ public class DataProviders {
         return new Object[][] {
                 { Product.newEntity()
                         .withCountProducts(3).build() },
+                { Product.newEntity()
+                        .withCountProducts(4).build() },
                 /* ... */
         };
     }
