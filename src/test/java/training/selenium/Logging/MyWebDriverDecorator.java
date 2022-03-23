@@ -1,7 +1,6 @@
-package training.selenium.Events;
+package training.selenium.Logging;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.Duration;
