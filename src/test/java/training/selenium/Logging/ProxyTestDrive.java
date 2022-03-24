@@ -22,7 +22,7 @@ public class ProxyTestDrive {
     public WebDriver driver;
     public WebDriverWait wait;
     public BrowserMobProxy proxy;
-   // public Proxy proxy;
+ //   public Proxy proxy;
 
     @BeforeEach
     public void start() {
