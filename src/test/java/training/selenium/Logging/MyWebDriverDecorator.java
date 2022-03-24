@@ -34,7 +34,6 @@ public class MyWebDriverDecorator {
         driver.get("http://www.google.com");
         driver.findElement(By.name("q")).sendKeys("webdriver");
         driver.findElement(By.name("btnK")).click();
-        driver.quit();
     }
 
     public class LoggingDecorator extends WebDriverDecorator {
