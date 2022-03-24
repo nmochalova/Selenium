@@ -1,4 +1,9 @@
 package training.selenium.Logging;
+/*
+
+implementation(group: 'net.lightbody.bmp', name: 'browsermob-core', version: '2.1.2') {
+    exclude module: 'selenium'
+}
 
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
@@ -71,3 +76,4 @@ public class ProxyTestDrive {
         har.getLog().getEntries().forEach(l -> System.out.println(l.getResponse().getStatus() + ":" + l.getRequest().getUrl()));
     }
 }
+*/
