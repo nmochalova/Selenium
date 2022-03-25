@@ -11,6 +11,8 @@ import java.time.Duration;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
 /***
  * Явные ожидания. Настройка, задается непосредственно при поиске элемента (на стороне клиента).
  * Явные ожидания позволяют проверять любые условия (нужный элемент будет иметь нужный текст,
@@ -43,7 +45,10 @@ public class ExplicitWait {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //останов драйвера в конце теста
         Runtime.getRuntime().addShutdownHook(
-                new Thread(() -> { driver.quit(); driver = null; }));
+                new Thread(() -> {
+                    driver.quit();
+                    driver = null;
+                }));
     }
 
     @Test
@@ -53,6 +58,19 @@ public class ExplicitWait {
         driver.findElement(By.name("btnK")).click();
         assertTrue(isElementPresentFirst(By.cssSelector(".g")));
         assertTrue(isElementPresentSecond(By.cssSelector(".g")));
+    }
+
+    @Test
+    public void test() {
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+        assertTrue(isTitlePresent("My Store"));
+
+        driver.get("http://localhost/litecart/admin/?app=catalog&doc=catalog&category_id=1");
+
+        assertTrue(isTitlePresent("Catalog | My Store"));
     }
 
     //Явные ожидания с помощью лямбда-выражений
@@ -76,6 +94,15 @@ public class ExplicitWait {
             wait.until(presenceOfElementLocated(locator));
             return true;
         } catch (TimeoutException ex) { //импортировать из org.openqa.selenium
+            return false;
+        }
+    }
+
+    public boolean isTitlePresent(String title) {
+        try {
+            wait.until(titleIs(title));
+            return true;
+        } catch (TimeoutException ex) {
             return false;
         }
     }
