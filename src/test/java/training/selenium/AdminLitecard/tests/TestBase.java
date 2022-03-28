@@ -3,7 +3,6 @@ package training.selenium.AdminLitecard.tests;
 import org.junit.Before;
 import training.selenium.AdminLitecard.app.Application;
 
-
 public class TestBase {
     public static ThreadLocal<Application> tlApp = new ThreadLocal<>();
     public Application app;
